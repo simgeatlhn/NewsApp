@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		60184177289914D800D49828 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60184176289914D800D49828 /* ArticleTableViewCell.swift */; };
+		6018417A28992BD300D49828 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6018417928992BD300D49828 /* Kingfisher */; };
 		6062FEB12898041300302741 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062FEB02898041300302741 /* ViewController.swift */; };
 		6062FEB42898049D00302741 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062FEB32898049D00302741 /* BookMarkViewController.swift */; };
 		6062FEB7289805CC00302741 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062FEB6289805CC00302741 /* ArticleViewController.swift */; };
@@ -47,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6018417A28992BD300D49828 /* Kingfisher in Frameworks */,
 				609DC4D1289803410017A60A /* Alamofire in Frameworks */,
 				609DC4D42898035A0017A60A /* SnapKit in Frameworks */,
 			);
@@ -207,6 +209,7 @@
 			packageProductDependencies = (
 				609DC4D0289803410017A60A /* Alamofire */,
 				609DC4D32898035A0017A60A /* SnapKit */,
+				6018417928992BD300D49828 /* Kingfisher */,
 			);
 			productName = NewsApp;
 			productReference = 609DC4A12898017D0017A60A /* NewsApp.app */;
@@ -239,6 +242,7 @@
 			packageReferences = (
 				609DC4CF289803410017A60A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				609DC4D22898035A0017A60A /* XCRemoteSwiftPackageReference "SnapKit" */,
+				6018417828992BD300D49828 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 609DC4A22898017D0017A60A /* Products */;
 			projectDirPath = "";
@@ -488,6 +492,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		6018417828992BD300D49828 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		609DC4CF289803410017A60A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -508,6 +520,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		6018417928992BD300D49828 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6018417828992BD300D49828 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		609DC4D0289803410017A60A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 609DC4CF289803410017A60A /* XCRemoteSwiftPackageReference "Alamofire" */;

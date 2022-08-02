@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class ArticleTableViewCell: UITableViewCell {
     
@@ -49,6 +50,7 @@ class ArticleTableViewCell: UITableViewCell {
     func saveArticle(model: Article) {
         title.text = model.title
         overview.text = model.content
+        articleImage.kf.setImage(with: URL(string: model.urlToImage!)!)
     }
     
     private func configure() {
@@ -81,9 +83,9 @@ extension ArticleTableViewCell {
     private func makeImage(){
         articleImage.snp.makeConstraints{ (make) in
             make.left.equalToSuperview().offset(16)
-            make.top.equalToSuperview().offset(40)
-            make.width.equalTo(100)
-            make.height.equalTo(150)
+            make.top.equalToSuperview().offset(10)
+            make.width.equalTo(120)
+            make.height.equalTo(180)
         }
     }
 }
