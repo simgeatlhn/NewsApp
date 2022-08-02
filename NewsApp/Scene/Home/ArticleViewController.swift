@@ -52,6 +52,7 @@ class ArticleController: UIViewController {
         tableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: ArticleTableViewCell.Identifier.custom.rawValue)
         tableView.delegate = self
         tableView.dataSource = self
+        
         view.addSubview(tableView)
         view.backgroundColor = .systemBackground
         title = "News"
@@ -77,8 +78,8 @@ extension ArticleController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //
-        
+        let vc = ArticleDetailViewController(article: viewModel.articles[indexPath.row])
+        show(vc, sender: self)
     }
 }
 

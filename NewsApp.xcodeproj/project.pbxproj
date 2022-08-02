@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		60184177289914D800D49828 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60184176289914D800D49828 /* ArticleTableViewCell.swift */; };
 		6018417A28992BD300D49828 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6018417928992BD300D49828 /* Kingfisher */; };
+		6018417C28992E0900D49828 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6018417B28992E0900D49828 /* ArticleDetailViewController.swift */; };
 		6062FEB12898041300302741 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062FEB02898041300302741 /* ViewController.swift */; };
 		6062FEB42898049D00302741 /* BookMarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062FEB32898049D00302741 /* BookMarkViewController.swift */; };
 		6062FEB7289805CC00302741 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6062FEB6289805CC00302741 /* ArticleViewController.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		60184176289914D800D49828 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		6018417B28992E0900D49828 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		6062FEB02898041300302741 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6062FEB32898049D00302741 /* BookMarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookMarkViewController.swift; sourceTree = "<group>"; };
 		6062FEB6289805CC00302741 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			children = (
 				609DC4CB289802910017A60A /* ArticleViewModel.swift */,
 				6062FEB6289805CC00302741 /* ArticleViewController.swift */,
+				6018417B28992E0900D49828 /* ArticleDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 			files = (
 				6062FEB12898041300302741 /* ViewController.swift in Sources */,
 				609DC4A52898017D0017A60A /* AppDelegate.swift in Sources */,
+				6018417C28992E0900D49828 /* ArticleDetailViewController.swift in Sources */,
 				609DC4CC289802910017A60A /* ArticleViewModel.swift in Sources */,
 				609DC4A72898017D0017A60A /* SceneDelegate.swift in Sources */,
 				609DC4C62898026C0017A60A /* Service.swift in Sources */,
