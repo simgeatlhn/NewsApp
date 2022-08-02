@@ -7,8 +7,11 @@
 
 import UIKit
 import SnapKit
+import Lottie
 
 class ArticleDetailViewController: UIViewController {
+    
+    private var animation = AnimationView()
     
     private let detailTitle: UILabel = {
         let title = UILabel()
@@ -25,9 +28,9 @@ class ArticleDetailViewController: UIViewController {
         return overView
     }()
     
-    private let favouriteIcon : UIImageView = {
-        let favouriteIcon = UIImageView()
-        favouriteIcon.image = UIImage(systemName: "bookmark")
+    private let favouriteIcon : UIButton = {
+        let favouriteIcon = UIButton()
+        favouriteIcon.setImage(UIImage(systemName: "bookmark"), for: .normal)
         favouriteIcon.tintColor = .white
         return favouriteIcon
     }()
@@ -61,6 +64,7 @@ class ArticleDetailViewController: UIViewController {
         makeOverview()
         makeImage()
         makeFavouriteIcon()
+        makeAnimation()
     }
     
     func configure() {
@@ -70,18 +74,25 @@ class ArticleDetailViewController: UIViewController {
         view.addSubview(overview)
         view.addSubview(articleImage)
         view.addSubview(favouriteIcon)
+        view.addSubview(animation)
     }
     
     func drawDesign() {
         title = "Details"
         view.backgroundColor = UIColor(red: 15/255, green: 61/255, blue: 62/255, alpha: 1)
+        
+        animation = .init(name: "news")
+        animation.frame = view.bounds
+        animation.contentMode = .scaleAspectFit
+        animation.loopMode = .loop
+        animation.animationSpeed = 1
+        animation.play()
     }
     
     private func saveArticleDetail() {
         detailTitle.text = articles.title
         overview.text = articles.content
         articleImage.kf.setImage(with: URL(string: articles.urlToImage!)!)
-        
     }
 }
 
@@ -116,8 +127,14 @@ extension ArticleDetailViewController {
         favouriteIcon.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top).offset(100)
             make.right.equalTo(view.snp.right).offset(-20)
-            make.width.equalTo(28)
-            make.height.equalTo(28)
+        }
+    }
+    
+    private func makeAnimation() {
+        animation.snp.makeConstraints { (make) in
+            make.top.equalTo(overview.snp.top).offset(24)
+            make.right.equalTo(view.snp.right).offset(-8)
+            make.left.equalTo(view.snp.left).offset(8)
         }
     }
 }

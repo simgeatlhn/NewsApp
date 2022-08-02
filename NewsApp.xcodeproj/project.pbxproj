@@ -24,6 +24,8 @@
 		609DC4CC289802910017A60A /* ArticleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609DC4CB289802910017A60A /* ArticleViewModel.swift */; };
 		609DC4D1289803410017A60A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 609DC4D0289803410017A60A /* Alamofire */; };
 		609DC4D42898035A0017A60A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 609DC4D32898035A0017A60A /* SnapKit */; };
+		60C7B06428994A5100F80052 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 60C7B06328994A5100F80052 /* Lottie */; };
+		60C7B0662899539300F80052 /* news.json in Resources */ = {isa = PBXBuildFile; fileRef = 60C7B0652899539300F80052 /* news.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,7 @@
 		609DC4C52898026C0017A60A /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		609DC4C7289802740017A60A /* ServiceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceManager.swift; sourceTree = "<group>"; };
 		609DC4CB289802910017A60A /* ArticleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewModel.swift; sourceTree = "<group>"; };
+		60C7B0652899539300F80052 /* news.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = news.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +56,7 @@
 				6018417A28992BD300D49828 /* Kingfisher in Frameworks */,
 				609DC4D1289803410017A60A /* Alamofire in Frameworks */,
 				609DC4D42898035A0017A60A /* SnapKit in Frameworks */,
+				60C7B06428994A5100F80052 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,9 +156,9 @@
 		609DC4BC289801E10017A60A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				60C7B0692899588800F80052 /* Detail */,
 				609DC4CB289802910017A60A /* ArticleViewModel.swift */,
 				6062FEB6289805CC00302741 /* ArticleViewController.swift */,
-				6018417B28992E0900D49828 /* ArticleDetailViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -187,10 +191,19 @@
 		60BACC67289806A900573141 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				60C7B0652899539300F80052 /* news.json */,
 				609DC4AF2898017E0017A60A /* LaunchScreen.storyboard */,
 				609DC4AD2898017E0017A60A /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		60C7B0692899588800F80052 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6018417B28992E0900D49828 /* ArticleDetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +226,7 @@
 				609DC4D0289803410017A60A /* Alamofire */,
 				609DC4D32898035A0017A60A /* SnapKit */,
 				6018417928992BD300D49828 /* Kingfisher */,
+				60C7B06328994A5100F80052 /* Lottie */,
 			);
 			productName = NewsApp;
 			productReference = 609DC4A12898017D0017A60A /* NewsApp.app */;
@@ -246,6 +260,7 @@
 				609DC4CF289803410017A60A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				609DC4D22898035A0017A60A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				6018417828992BD300D49828 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				60C7B06228994A5100F80052 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 609DC4A22898017D0017A60A /* Products */;
 			projectDirPath = "";
@@ -261,6 +276,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C7B0662899539300F80052 /* news.json in Resources */,
 				609DC4B12898017E0017A60A /* LaunchScreen.storyboard in Resources */,
 				609DC4AE2898017E0017A60A /* Assets.xcassets in Resources */,
 			);
@@ -521,6 +537,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		60C7B06228994A5100F80052 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -538,6 +562,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 609DC4D22898035A0017A60A /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		60C7B06328994A5100F80052 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60C7B06228994A5100F80052 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
