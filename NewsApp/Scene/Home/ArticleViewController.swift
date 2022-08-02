@@ -61,7 +61,7 @@ class ArticleController: UIViewController {
 
 
 // MARK: - TableView Extensions
-extension ArticleController: UITableViewDelegate, UITableViewDataSource {
+extension ArticleController:ConfigureTableView {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.articles.count
