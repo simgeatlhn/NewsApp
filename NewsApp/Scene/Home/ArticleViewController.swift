@@ -12,11 +12,17 @@ protocol ArticleOutPut {
     func articles(article: Article)
 }
 
-final class ArticleController: UIViewController {
+class ArticleController: UIViewController {
     
-    private lazy var tableView: UITableView = {
+    private var tableView: UITableView = {
         let tableView = UITableView()
+        tableView.rowHeight = 200
         return tableView
+    }()
+    
+    private var searchController: UISearchController = {
+        let searchController = UISearchController()
+        return searchController
     }()
     
     var viewModel: ArticleViewModelProtocol
@@ -32,16 +38,18 @@ final class ArticleController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.searchController = searchController
         configure()
     }
     
     func configure() {
         drawDesign()
-        makeTableView()
         fetchData() //**
+        makeTableView()
     }
     
     func drawDesign() {
+        tableView.register(ArticleTableViewCell.self, forCellReuseIdentifier: ArticleTableViewCell.Identifier.custom.rawValue)
         tableView.delegate = self
         tableView.dataSource = self
         view.addSubview(tableView)
@@ -55,12 +63,15 @@ final class ArticleController: UIViewController {
 extension ArticleController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.articles.count
+        return viewModel.articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        guard let cell: ArticleTableViewCell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.Identifier.custom.rawValue) as? ArticleTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.saveArticle(model: viewModel.articles[indexPath.row])
         return cell
     }
     

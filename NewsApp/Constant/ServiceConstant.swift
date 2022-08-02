@@ -11,7 +11,7 @@ class Network {
     
     enum ServiceEndPoint: String {
         
-        case BASE_URL = "https://newsapi.org/v2/everything?q=bitcoin&"
+        case BASE_URL = "https://newsapi.org/v2/everything?domains=wsj.com&"
         case API_KEY = "apiKey=605d43c6493943378e74fc65a199de52"
         
         static func fetchArticles() -> String {
