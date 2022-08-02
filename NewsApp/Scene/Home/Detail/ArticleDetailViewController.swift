@@ -7,11 +7,8 @@
 
 import UIKit
 import SnapKit
-import Lottie
 
 class ArticleDetailViewController: UIViewController {
-    
-    private var animation = AnimationView()
     
     private let detailTitle: UILabel = {
         let title = UILabel()
@@ -64,7 +61,6 @@ class ArticleDetailViewController: UIViewController {
         makeOverview()
         makeImage()
         makeFavouriteIcon()
-        makeAnimation()
     }
     
     func configure() {
@@ -74,19 +70,11 @@ class ArticleDetailViewController: UIViewController {
         view.addSubview(overview)
         view.addSubview(articleImage)
         view.addSubview(favouriteIcon)
-        view.addSubview(animation)
     }
     
     func drawDesign() {
         title = "Details"
         view.backgroundColor = UIColor(red: 15/255, green: 61/255, blue: 62/255, alpha: 1)
-        
-        animation = .init(name: "news")
-        animation.frame = view.bounds
-        animation.contentMode = .scaleAspectFit
-        animation.loopMode = .loop
-        animation.animationSpeed = 1
-        animation.play()
     }
     
     private func saveArticleDetail() {
@@ -127,14 +115,6 @@ extension ArticleDetailViewController {
         favouriteIcon.snp.makeConstraints { (make) in
             make.top.equalTo(view.snp.top).offset(100)
             make.right.equalTo(view.snp.right).offset(-20)
-        }
-    }
-    
-    private func makeAnimation() {
-        animation.snp.makeConstraints { (make) in
-            make.top.equalTo(overview.snp.top).offset(24)
-            make.right.equalTo(view.snp.right).offset(-8)
-            make.left.equalTo(view.snp.left).offset(8)
         }
     }
 }
