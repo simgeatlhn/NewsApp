@@ -3,7 +3,7 @@
 - Used table view in list screen
 - Download news images via Kingfisher
 - Lottie animation was used on the bookmark screen.
-- Fetch the data from <a href="https://newsapi.org/s/google-news-api">Google News API.</a>.
+- Fetch the data from <a href="https://newsapi.org/s/google-news-api">Google News API</a>
 
  
 # Technologies
