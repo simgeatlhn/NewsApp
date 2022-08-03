@@ -23,4 +23,9 @@
 # Demo
 
 https://user-images.githubusercontent.com/73952475/182572307-36a443cc-6bae-465a-b6a1-e08807c91d8c.mov
+
+# ToDo
+- add favorite news to bookmark screen
+- add searchable
+
  
