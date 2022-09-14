@@ -12,6 +12,7 @@
 - Alamofire
 - Snapkit (Programmatically)
 - Kingfisher
+- Localization
 - Table View
 - Tab Bar and Navigation Controller
 - Search Controller
@@ -23,6 +24,11 @@
 # Demo
 
 https://user-images.githubusercontent.com/73952475/182572307-36a443cc-6bae-465a-b6a1-e08807c91d8c.mov
+
+# Localization Demo
+
+https://user-images.githubusercontent.com/73952475/190154764-784a34a4-ce2b-47dd-80a6-cea4ebeb029b.mov
+
 
 # ToDo
 - add favorite news to bookmark screen
