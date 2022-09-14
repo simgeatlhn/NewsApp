@@ -28,7 +28,7 @@ class BookMarkViewController: UIViewController {
     }
     
     private func drawDesing() {
-        title = "Bookmark"
+        title = "Bookmark".localize()
         view.backgroundColor = UIColor(red: 15/255, green: 61/255, blue: 62/255, alpha: 1)
         
         animation = .init(name: "news")

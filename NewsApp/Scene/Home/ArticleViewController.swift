@@ -55,7 +55,18 @@ class ArticleController: UIViewController {
         
         view.addSubview(tableView)
         view.backgroundColor = .systemBackground
-        title = "News"
+        title = "News".localize()
+    }
+}
+
+//MARK: - Localization
+extension String {
+    func localize() -> String {
+        return NSLocalizedString(self,
+                                 tableName: "Localizable",
+                                 bundle: .main,
+                                 value: self,
+                                 comment: self)
     }
 }
 

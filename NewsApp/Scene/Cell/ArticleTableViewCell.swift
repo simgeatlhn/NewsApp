@@ -64,6 +64,7 @@ class ArticleTableViewCell: UITableViewCell {
     }
 }
 
+
 extension ArticleTableViewCell {
     private func makeTitleLabel() {
         title.snp.makeConstraints { (make) in

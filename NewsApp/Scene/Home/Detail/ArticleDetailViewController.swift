@@ -73,7 +73,7 @@ class ArticleDetailViewController: UIViewController {
     }
     
     func drawDesign() {
-        title = "Details"
+        title = "Details".localize()
         view.backgroundColor = UIColor(red: 15/255, green: 61/255, blue: 62/255, alpha: 1)
     }
     
