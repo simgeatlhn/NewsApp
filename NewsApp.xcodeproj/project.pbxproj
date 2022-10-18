@@ -162,10 +162,11 @@
 		609DC4BB289801D50017A60A /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				609DC4BC289801E10017A60A /* Home */,
+				60C7B0692899588800F80052 /* Detail */,
 				60184175289914BE00D49828 /* Cell */,
 				6062FEB5289804CC00302741 /* TabBar */,
 				6062FEB22898049100302741 /* Bookmark */,
-				609DC4BC289801E10017A60A /* Home */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -173,7 +174,6 @@
 		609DC4BC289801E10017A60A /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				60C7B0692899588800F80052 /* Detail */,
 				609DC4CB289802910017A60A /* ArticleViewModel.swift */,
 				6062FEB6289805CC00302741 /* ArticleViewController.swift */,
 			);

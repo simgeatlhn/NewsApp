@@ -9,32 +9,35 @@ import Alamofire
 
 protocol ArticleViewModelProtocol: AnyObject {
     func fetchArticles(onSuccess: @escaping (ArticleList?) -> Void, onError: @escaping (AFError) -> Void)
-    
-    var articles: [Article] { get set }
-    var delegate: ArticleOutPut? { get set }
-
+    func fetchDetailArticle(onSuccess: @escaping (Article?) -> Void, onError: @escaping (AFError) -> Void)
 }
 
 final class ArticleViewModel: ArticleViewModelProtocol {
-    
-    var delegate: ArticleOutPut?
-    var articles = [Article]()
-    
     var service: ServiceProtocol
     
     init(service: ServiceProtocol){
         self.service = service
     }
-}
-
-// MARK: - Service
-extension ArticleViewModel {
+    
     func fetchArticles(onSuccess: @escaping (ArticleList?) -> Void, onError: @escaping (AFError) -> Void) {
-        service.fetchArticles { data in
-            guard let model = data else { onSuccess(nil)
+        service.fetchArticles { article in
+            guard let article = article else {
+                onSuccess(nil)
                 return
             }
-            onSuccess(model)
+            onSuccess(article)
+        } onError: { error in
+            onError(error)
+        }
+    }
+    
+    func fetchDetailArticle(onSuccess: @escaping (Article?) -> Void, onError: @escaping (AFError) -> Void) {
+        service.fetchDetailArticle { article in
+            guard let article = article else {
+                onSuccess(nil)
+                return
+            }
+            onSuccess(article)
         } onError: { error in
             onError(error)
         }

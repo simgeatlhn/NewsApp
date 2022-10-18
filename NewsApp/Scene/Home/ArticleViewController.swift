@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol ArticleOutPut {
-    func articles(article: Article)
+    func selectedArticles(article: Article)
 }
 
 class ArticleController: UIViewController {
@@ -26,6 +26,8 @@ class ArticleController: UIViewController {
     }()
     
     var viewModel: ArticleViewModelProtocol
+    private lazy var newsResult = [Article]()
+    private lazy var searchResult = [Article]()
     
     init(viewModel: ArticleViewModelProtocol) {
         self.viewModel = viewModel
@@ -39,6 +41,8 @@ class ArticleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self //***
+        
         configure()
     }
     
@@ -59,23 +63,15 @@ class ArticleController: UIViewController {
     }
 }
 
-//MARK: - Localization
-extension String {
-    func localize() -> String {
-        return NSLocalizedString(self,
-                                 tableName: "Localizable",
-                                 bundle: .main,
-                                 value: self,
-                                 comment: self)
-    }
-}
-
-
 // MARK: - TableView Extensions
 extension ArticleController:ConfigureTableView {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.articles.count
+        if searchController.isActive {
+            return searchResult.count
+        }else {
+            return newsResult.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -83,18 +79,27 @@ extension ArticleController:ConfigureTableView {
         guard let cell: ArticleTableViewCell = tableView.dequeueReusableCell(withIdentifier: ArticleTableViewCell.Identifier.custom.rawValue) as? ArticleTableViewCell else {
             return UITableViewCell()
         }
-        cell.saveArticle(model: viewModel.articles[indexPath.row])
+        
+        if searchController.isActive {
+            cell.saveArticle(model: searchResult[indexPath.row])
+        }else {
+            cell.saveArticle(model: newsResult[indexPath.row])
+        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let vc = ArticleDetailViewController(article: viewModel.articles[indexPath.row])
-        show(vc, sender: self)
+        if searchController.isActive {
+            selectedArticles(article: searchResult[indexPath.row])
+        }else {
+            selectedArticles(article: newsResult[indexPath.row])
+        }
     }
 }
 
 
+// MARK: - Table
 extension ArticleController {
     private func makeTableView() {
         tableView.snp.makeConstraints { make in
@@ -104,18 +109,58 @@ extension ArticleController {
     }
 }
 
-// MARK: - Service Extension
+// MARK: - Service Extension - Connection
 private extension ArticleController {
     private func fetchData() {
         viewModel.fetchArticles { [weak self] data in
             guard let data = data?.articles else { return }
-            self?.viewModel.articles = data
+            self?.newsResult = data
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
         } onError: { error in
             print(error)
         }
+    }
+}
+
+//MARK: - Navigation
+extension ArticleController: ArticleOutPut {
+    func selectedArticles(article: Article) {
+        navigationController?.pushViewController(ArticleDetailViewController(article: article), animated: true)
+    }
+}
+
+//MARK: - Searchable
+extension ArticleController: UISearchResultsUpdating {
+    
+    func filterContentForSearchText(_ searchText: String) {
+        searchResult = newsResult.filter({ (newsResult:Article) -> Bool in
+            let titleMatch = newsResult.title?.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
+            return titleMatch != nil
+        })
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        if let searchText = searchController.searchBar.text {
+            if searchText.count > 2 {
+                filterContentForSearchText(searchText)
+                tableView.reloadData()
+            }else {
+                tableView.reloadData()
+            }
+        }
+    }
+}
+
+//MARK: - Localization
+extension String {
+    func localize() -> String {
+        return NSLocalizedString(self,
+                                 tableName: "Localizable",
+                                 bundle: .main,
+                                 value: self,
+                                 comment: self)
     }
 }
 
