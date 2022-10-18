@@ -26,8 +26,8 @@ class ArticleController: UIViewController {
     }()
     
     var viewModel: ArticleViewModelProtocol
-    private lazy var newsResult = [Article]()
-    private lazy var searchResult = [Article]()
+    private var newsResult = [Article]()
+    private var filteredResult = [Article]()
     
     init(viewModel: ArticleViewModelProtocol) {
         self.viewModel = viewModel
@@ -42,6 +42,8 @@ class ArticleController: UIViewController {
         super.viewDidLoad()
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self //***
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search Articles"
         
         configure()
     }
@@ -68,7 +70,7 @@ extension ArticleController:ConfigureTableView {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive {
-            return searchResult.count
+            return filteredResult.count
         }else {
             return newsResult.count
         }
@@ -81,7 +83,7 @@ extension ArticleController:ConfigureTableView {
         }
         
         if searchController.isActive {
-            cell.saveArticle(model: searchResult[indexPath.row])
+            cell.saveArticle(model: filteredResult[indexPath.row])
         }else {
             cell.saveArticle(model: newsResult[indexPath.row])
         }
@@ -91,7 +93,7 @@ extension ArticleController:ConfigureTableView {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if searchController.isActive {
-            selectedArticles(article: searchResult[indexPath.row])
+            selectedArticles(article: filteredResult[indexPath.row])
         }else {
             selectedArticles(article: newsResult[indexPath.row])
         }
@@ -135,7 +137,7 @@ extension ArticleController: ArticleOutPut {
 extension ArticleController: UISearchResultsUpdating {
     
     func filterContentForSearchText(_ searchText: String) {
-        searchResult = newsResult.filter({ (newsResult:Article) -> Bool in
+        filteredResult = newsResult.filter({ (newsResult:Article) -> Bool in
             let titleMatch = newsResult.title?.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
             return titleMatch != nil
         })
