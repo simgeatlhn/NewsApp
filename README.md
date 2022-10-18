@@ -15,7 +15,7 @@
 - Localization
 - Table View
 - Tab Bar and Navigation Controller
-- Search Controller
+- Search Controller (Searchable)
 - TypeAlias
 - Codable
 - SPM
@@ -23,7 +23,8 @@
 
 # Demo
 
-https://user-images.githubusercontent.com/73952475/182572307-36a443cc-6bae-465a-b6a1-e08807c91d8c.mov
+https://user-images.githubusercontent.com/73952475/196402289-3fce20ed-9430-40ca-a242-01fcbc41e17f.mov
+
 
 # Localization Demo
 
@@ -32,6 +33,6 @@ https://user-images.githubusercontent.com/73952475/190154764-784a34a4-ce2b-47dd-
 
 # ToDo
 - add favorite news to bookmark screen
-- add searchable
+- add searchable ✅
 
  
